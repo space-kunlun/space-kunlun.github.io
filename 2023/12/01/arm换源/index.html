@@ -26,14 +26,14 @@
 <meta property="og:url" content="http://example.com/2023/12/01/arm%E6%8D%A2%E6%BA%90/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="原因：由于arm系统的官方软件源服务器在国外，为了更快的下载和安装应用需要先将软件源修改为过内的软件源。国内的各大互联网公司均有提供镜像源服务，这里随便选取一家即可：阿里云：https:&#x2F;&#x2F;developer.aliyun.com&#x2F;mirror&#x2F;腾讯云:https:&#x2F;&#x2F;mirrors.cloud.tencent.com&#x2F;华为云：https:&#x2F;&#x2F;mirrors.huaweicloud.com&#x2F;hom">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/space-kunlun/imageBed@main/hexo/armbian2.png">
+<meta property="og:locale">
+<meta property="og:image" content="https://codeberg.org/space-kunlun/imageBed/raw/branch/main/hexo/armbian2.png">
 <meta property="article:published_time" content="2023-12-01T08:50:20.000Z">
-<meta property="article:modified_time" content="2023-12-06T16:57:49.000Z">
+<meta property="article:modified_time" content="2024-09-15T02:35:14.000Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="armbain">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/space-kunlun/imageBed@main/hexo/armbian2.png">
+<meta name="twitter:image" content="https://codeberg.org/space-kunlun/imageBed/raw/branch/main/hexo/armbian2.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -57,7 +57,7 @@
   
     
 <div id="banner" class="">
-  <img src="https://cdn.jsdelivr.net/gh/space-kunlun/imageBed@main/beijing.jpg" itemprop="image">
+  <img src="https://codeberg.org/space-kunlun/imageBed/raw/branch/main/beijing.jpg" itemprop="image">
   <div id="banner-dim"></div>
 </div>
  
@@ -129,7 +129,7 @@
   <div class="info-card">
     <div class="avatar">
       
-        <image src=https://cdn.jsdelivr.net/gh/space-kunlun/imageBed@main/touxiang.png></image>
+        <image src=https://codeberg.org/space-kunlun/imageBed/raw/branch/main/touxiang.png></image>
       
       <div class="img-dim"></div>
     </div>
@@ -264,17 +264,17 @@
         
           <h2 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h2><p>由于arm系统的官方软件源服务器在国外，为了更快的下载和安装应用需要先将软件源修改为过内的软件源。<br>国内的各大互联网公司均有提供镜像源服务，这里随便选取一家即可：<br>阿里云：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/">https://developer.aliyun.com/mirror/</a><br>腾讯云:<a target="_blank" rel="noopener" href="https://mirrors.cloud.tencent.com/">https://mirrors.cloud.tencent.com/</a><br>华为云：<a target="_blank" rel="noopener" href="https://mirrors.huaweicloud.com/home">https://mirrors.huaweicloud.com/home</a><br>清华大学：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help">https://mirrors.tuna.tsinghua.edu.cn/help</a><br>还有很多这里看大家更喜欢用哪家的就行</p>
 <h3 id="1-修改系统的配置文件"><a href="#1-修改系统的配置文件" class="headerlink" title="1.修改系统的配置文件"></a>1.修改系统的配置文件</h3><p>文件的路径是 &#x2F;etc&#x2F;apt&#x2F;sources.list，这里我习惯使用vim工具所以我以下都是用vim工具来修改配置文件，如果有其他的工具更换即可。<br>输入命令:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vi /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 <p>在弹出来的页面按“D”键就可以删除原来的内容了。</p>
 <h3 id="2-替换软件源"><a href="#2-替换软件源" class="headerlink" title="2.替换软件源"></a>2.替换软件源</h3><p>删除了原来的内容后按“i”键就进入了编辑模式，再将准备好的软件源复制、粘贴进去</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic main main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic main main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># deb https://mirrors.aliyun.com/ubuntu-ports/ bionic-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.aliyun.com/ubuntu-ports/ bionic-proposed main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
 <p>粘贴好后按“Ctrl+C”退出编辑模式，再按“Shift+：”输入wq回车，保存退出</p>
-<h4 id="注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样"><a href="#注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样" class="headerlink" title="注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样:"></a>注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样:</h4><p><img src="https://cdn.jsdelivr.net/gh/space-kunlun/imageBed@main/hexo/armbian2.png" alt="Aaron Swartz"></p>
+<h4 id="注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样"><a href="#注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样" class="headerlink" title="注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样:"></a>注意：这里新手小白可能会遇见一个问题就是换了之后报错，这是因为没选对软件源，这里的斜杠后的bionic是版本号只要将这里替换掉就行了。就像这样:</h4><p><img src="https://codeberg.org/space-kunlun/imageBed/raw/branch/main/hexo/armbian2.png" alt="Aaron Swartz"></p>
 <h4 id="两者就只有bionic和jammy这里不一样，其他的就是服务商的具体网址不一样了"><a href="#两者就只有bionic和jammy这里不一样，其他的就是服务商的具体网址不一样了" class="headerlink" title="两者就只有bionic和jammy这里不一样，其他的就是服务商的具体网址不一样了"></a>两者就只有bionic和jammy这里不一样，其他的就是服务商的具体网址不一样了</h4><h3 id="3-更换arm镜像源"><a href="#3-更换arm镜像源" class="headerlink" title="3.更换arm镜像源"></a>3.更换arm镜像源</h3><p>输入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/apt/sources.list.d/armbian.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vi /etc/apt/sources.list.d/armbian.list</span><br></pre></td></tr></table></figure>
 <p>将里面的官方网址部分替换为选择的镜像源服务商网址即可。<br>如：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/ubuntu-ports/">https://mirrors.aliyun.com/ubuntu-ports/</a> bionic-proposed main restricted universe multiverse<br>只需将mirrors.aliyun.com部分替换掉即可</p>
 <h3 id="4-更新"><a href="#4-更新" class="headerlink" title="4.更新"></a>4.更新</h3><p>输入命令;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt update &amp;&amp; apt upgrade</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ apt update &amp;&amp; apt upgrade</span><br></pre></td></tr></table></figure>
 <p>等待更新结束就可以了。</p>
 
         
@@ -329,7 +329,7 @@
     <div id="vcomments"></div>
   </div>
   <script>
-      new Valine({"enable":true,"appId":"s8BF6X2v95YGKRM6gRplAmCN-gzGzoHsz","appKey":"ijt4h1INHJjt0tMOUurzbw2Y","placeholder":"Just go go","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+      new Valine({"enable":true,"appId":"s8BF6X2v95YGKRM6gRplAmCN-gzGzoHsz","appKey":"ijt4h1INHJjt0tMOUurzbw2Y","placeholder":"来都来了，说点什么吧！","pageSize":10,"highlight":true,"serverURLs":"https://hexo.space-time.cn","el":"#vcomments"});
   </script>
 
 
